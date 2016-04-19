@@ -325,7 +325,11 @@ class SignatureDatabase(object):
         # Walk the bytes in the data and match them
         # against the signature
         #
-        for idx, byte in enumerate ( [ord (b) for b in data] ):
+        if type(data) == str:
+            loopiter = [ord (b) for b in data]
+        else:
+            loopiter = data
+        for idx, byte in enumerate ( loopiter ):
 
             # If the tree is exhausted...
             #
